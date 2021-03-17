@@ -1,0 +1,12 @@
+from seq import Seq
+
+
+print("-----| Exercise 7 |------")
+s1 = Seq()
+s2 = Seq("ACTGA")
+s3 = Seq("Invalid sequence")
+sequences = [s1, s2, s3]  # 0, 1, 2
+for index, sequence in enumerate(sequences):
+    print(f"Sequence {index}: (Length: {sequence.len()}) {sequence}")
+    print(f"\tBases: {sequence.count()}")
+    print(f"\tRev: {sequence.reverse()}")
