@@ -46,12 +46,14 @@ while True:
         print(f"Message received: {msg}")
 
         # -- Send a response message to the client
-        response = "ECHO" + msg
-        print("Response:", response)
+        try:
+            response = int(msg) ** int(msg)
+            print("Response:", response)
 
-        # -- The message has to be encoded into bytes
-        cs.send(str(response).encode())
-        cs.send("we need a number".encode()
+            # -- The message has to be encoded into bytes
+            cs.send(str(response).encode())
+        except ValueError:
+            cs.send("we need a number".encode()
 
         # -- Close the data socket
         cs.close()

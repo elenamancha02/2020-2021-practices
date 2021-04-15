@@ -22,10 +22,11 @@ class Client:
     def talk(self, msg):
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.connect((self.ip, self.port))
-        s.send(bytes(msg, "utf-8"))
+        print ("To server:", msg)
+        s.send(msg.encode())
         response = s.recv(2048).decode("utf-8")
         s.close()
-        return response
+        return "From server: " + response
 
     def debug_talk(self, msg):
         return "From server: " + colored(self.talk(msg), "green")
