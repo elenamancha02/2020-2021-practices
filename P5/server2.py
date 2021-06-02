@@ -69,10 +69,13 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
         elif self.path.endswith(".html"):
             try:
                 contents = read_html_file("./html"+ self.path)
+                print(1)
             except FileNotFoundError:
                 contents = read_html_file("./html/error.html")
+                print(2)
         else:
             contents = read_html_file("./html/error.html")
+            print(3)
 
 
         # Generating the response message
