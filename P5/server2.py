@@ -4,14 +4,6 @@ import termcolor
 import pathlib
 import jinja2
 
-def read_html_file(filename):
-    content = pathlib.Path(filename).read_text()
-    return content
-
-def read_template_html_file(filename):
-    content = jinja2.Template(pathlib.Path(filename).read_text())
-    return content
-
 
 PORT = 8080
 
@@ -40,7 +32,13 @@ BASES_INFORMATION = {
 # -- This is for preventing the error: "Port already in use"
 socketserver.TCPServer.allow_reuse_address = True
 
+def read_html_file(filename):
+    content = pathlib.Path(filename).read_text()
+    return content
 
+def read_template_html_file(filename):
+    content = jinja2.Template(pathlib.Path(filename).read_text())
+    return content
 
 # Class with our Handler. It is a called derived from BaseHTTPRequestHandler
 # It means that our class inheritates all his methods and properties
@@ -64,7 +62,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
             base = self.path.split("/")[-1]
             context = BASES_INFORMATION[base]
             context["letter"] = base
-            contents= read_template_html_file("./html/info/general.html").render(base_information=context)
+            contents = read_template_html_file("./html/info/general.html").render(base_information=context)
 
         elif self.path.endswith(".html"):
             try:
