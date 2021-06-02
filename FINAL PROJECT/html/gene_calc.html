@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+     <meta charset="UTF-8">
+     <title>Gene Calc</title>
+ </head>
+ <body style="background:lightgrey">
+    <h1>GENE {{context.gene}} </h1>
+    <h2> ID: ({{context.id}})</h2>
+    <p>The total length of the sequence is: {{context.seq.len()}}</p>
+    {% for base, count in context.seq.count().items(): %}
+      <p>{{base}}: {{count}} ({{context.seq.percentage_base(base)}}%)</p>
+    {% endfor %}
+ </body>
+</html>

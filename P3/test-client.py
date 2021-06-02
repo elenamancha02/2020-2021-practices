@@ -25,39 +25,39 @@ answer = c.talk("GET 4")
 print(f"GET 4: {answer}")
 
 print("* Testing INFO...")
-response = c.talk(f"INFO {seq}")
-print(response)
+answer = c.talk(f"INFO {seq}")
+print(answer)
 
 print("* Testing COMP...")
 print(f"COMP {seq}")
-response = c.talk(f"COMP {seq}")
-print(response)
+answer = c.talk(f"COMP {seq}")
+print(answer)
 
 print("* Testing REV...")
 print(f"REV {seq}")
-response = c.talk(f"REV {seq}")
-print(response)
+answer = c.talk(f"REV {seq}")
+print(answer)
 
 print("* Testing GENE...")
 print("GENE U5")
-response = c.talk("GENE U5")
-print(response)
+answer = c.talk("GENE U5")
+print(answer)
 
 
 print("GENE ADA")
-response = c.talk("GENE ADA")
-print(response)
+answer = c.talk("GENE ADA")
+print(answer)
 
 print("GENE FRAT1")
-response = c.talk("GENE FRAT1")
-print(response)
+answer = c.talk("GENE FRAT1")
+print(answer)
 
 print("GENE FXN")
-response = c.talk("GENE FXN")
-print(response)
+answer = c.talk("GENE FXN")
+print(answer)
 
 
 print("GENE RNU6_269P")
-response = c.talk("GENE RNU6_269P")
-print(response)
+answer = c.talk("GENE RNU6_269P")
+print(answer)
 

@@ -64,14 +64,18 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
             context["n_sequences"] = len(SEQUENCES_LIST)
             context["genes_list"] = GENES_LIST
             contents = su.read_template_html_file("./html/index.html").render(context=context)
+
         elif path_name == "/ping":
             contents = su.read_template_html_file("./html/ping.html").render()
+
         elif path_name == "/get":
             number_sequence = arguments["sequence"][0]
             contents = su.get(number_sequence, SEQUENCES_LIST)
+
         elif path_name == "/gene":
             gene = arguments["gene"][0]
             contents = su.gene(gene)
+
         elif path_name == "/operation":
             sequence = arguments["sequence"][0]
             operation = arguments["operation"][0]
@@ -81,6 +85,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 contents = su.comp(sequence)
             else:
                 contents = su.rev(sequence)
+
         else:
             contents = su.read_template_html_file("./html/error.html").render()
 

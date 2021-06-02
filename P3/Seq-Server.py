@@ -2,9 +2,11 @@ import termcolor
 import socket
 from seq import Seq
 
-list_sequences = ["AGCTTTTGAAACCCCG", "TGAACTGAAACGT", "GACGTACGACCCAGT", "AGAGCTATGAAAGGGCC", "TAGGGGTTCCCGATAGC"]
 PORT = 8080
 IP = "127.0.0.1"
+
+list_sequences = ["AGCTTTTGAAACCCCG", "TGAACTGAAACGT", "GACGTACGACCCAGT", "AGAGCTATGAAAGGGCC", "TAGGGGTTCCCGATAGC"]
+
 
 ls = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 ls.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
@@ -38,16 +40,17 @@ while True:
 
         elif msg.startswith("GET"):
             parts = msg.split(" ")
-            try:
-                number = int(parts[1])
-                if 0 <= number <= len(list_sequences):
-                    termcolor.cprint("GET", 'green')
-                    seq = list_sequences[number]
-                    termcolor.cprint(f"{seq}\n", 'white')
-                    cs.send(f"{seq}".encode())
-                    cs.close()
-            except ValueError:
-                pass
+            if len(parts) == 2 and parts[0] == "GET":
+                try:
+                    number = int(parts[1])
+                    if 0 <= number <= len(list_sequences):
+                        termcolor.cprint("GET", 'green')
+                        seq = list_sequences[number]
+                        termcolor.cprint(f"{seq}\n", 'white')
+                        cs.send(f"{seq}".encode())
+                        cs.close()
+                except ValueError:
+                    pass
 
         elif msg.startswith("INFO"):
             parts = msg.split(" ")

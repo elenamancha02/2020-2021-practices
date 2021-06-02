@@ -9,16 +9,16 @@ class Seq:
     def __init__(self, bases="NULL"):
         if bases == "NULL":
             print("NULL sequence created!")
-        else:
-            for base in bases:
-                if base not in Seq.BASES_VALID:
-                    print("INVALID sequence created!")
-                    self.bases = "ERROR"
-                    return
-
-            print("New sequence created!")
-
+            self.bases = bases
+            return
+        for base in bases:
+            if base not in Seq.BASES_VALID:
+                print("INVALID sequence created!")
+                self.bases = "ERROR"
+                return
         self.bases = bases
+        print("New sequence created!")
+
 
     def __str__(self):
         return self.bases
@@ -70,8 +70,18 @@ class Seq:
                 result += f"{base}: {count} ({'{:.1f}'.format((count * 100) / self.len())}%)\n"
         return result
 
+    def most_frequent_base(self):
+        if self.bases == "NULL" or self.bases == "ERROR":
+            return None
 
-
+        bases_freq = self.count()
+        base_result = None
+        freq_result = 0
+        for base, freq in bases_freq.items():
+            if freq > freq_result:
+                base_result = base
+                freq_result = freq
+        return base_result
 
 
 

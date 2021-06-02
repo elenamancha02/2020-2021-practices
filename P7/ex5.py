@@ -22,17 +22,17 @@ PARAMETERS = "?content-type=application/json"
 connection = http.client.HTTPConnection(SERVER)
 try:
     for id in DICT_GENES.values():
-    connection.request("GET", ENDPOINT + id + PARAMETERS)
-    response = connection.getresponse()
-    if response.status == 200:
-        response_dict =json.loads(response.read().decode())
-        #print(json.dumps(response_dict, indent=4, sort_keys=True))
-        sequence = Seq1.Seq(response_dict["seq"])
-        s_length = sequence.len()
-        a, c, g,t =sequence.percentage_base(sequence.count_base(),s_length)
-        most_frequent_base = sequence.frequent_base(sequence.count())
-        PRINT("Total length:", s_length)
-        print("Most frequent base:", most_frequent_base)
+        connection.request("GET", ENDPOINT + id + PARAMETERS)
+        response = connection.getresponse()
+        if response.status == 200:
+            response_dict =json.loads(response.read().decode())
+            #print(json.dumps(response_dict, indent=4, sort_keys=True))
+            sequence = Seq1.Seq(response_dict["seq"])
+            s_length = sequence.len()
+            a, c, g,t =sequence.percentage_base(sequence.count_base(),s_length)
+            most_frequent_base = sequence.frequent_base(sequence.count())
+            print("Total length:", s_length)
+            print("Most frequent base:", most_frequent_base)
 
 except KeyError:
     print("The gene is not inside our dictionary. Choose one of the following:", list(DICT_GENES.keys()))

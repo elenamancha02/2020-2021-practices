@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/xhtml"  >
+ <head>
+    <meta charset="UTF-8">
+    <title>Karyotype</title>
+ </head>
+ <body style="background: lightgreen">
+ <h1>KARYOTYPE</h1>
+    <p>The karyotype of the specie you have chosen is the following: </p>
+    <ul>
+    {% for chromosome in context.karyotype: %}
+        <li>{{chromosome}}</li>
+    {% endfor %}
+    </ul>
+ </body>
+</html>

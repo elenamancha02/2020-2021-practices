@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+ <head>
+     <meta charset="UTF-8">
+     <title>Gene Seq</title>
+ </head>
+ <body style="background: lightpink">
+    <h1>GENE {{context.gene}}</h1>
+    <h2>The bases for the gene you have selected are:</h2>
+    <label for="gene_content">Bases:</label><br>
+    <textarea id="gene_content" name="gene_bases" rows="5" cols="50">
+        {{context.bases}}
+    </textarea>
+ </body>
+</html>

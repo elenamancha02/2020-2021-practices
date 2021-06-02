@@ -1,6 +1,7 @@
 import http.client
 import json
 import Seq1
+from Seq1 import Seq
 
 DICT_GENES = {
     "FRAT1": "ENSG00000165879",
@@ -32,7 +33,7 @@ try:
         s_length = sequence.len()
         a, c, g,t =sequence.percentage_base(sequence.count_base(),s_length)
         most_frequent_base = sequence.frequent_base(sequence.count())
-        PRINT("Total length:", s_length)
+        print("Total length:", s_length)
         print("Most frequent base:", most_frequent_base)
 
 except KeyError:

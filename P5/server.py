@@ -16,7 +16,7 @@ def read_html_file(filename):
 # It means that our class inheritates all his methods and properties
 class TestHandler(http.server.BaseHTTPRequestHandler):
 
-    def do_GET(self):
+    def do_GET(self, contents=None):
         """This method is called whenever the client invokes the GET method
         in the HTTP protocol request"""
 
@@ -32,7 +32,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
             contents == read_html_file("./html/index.html")
         elif "/info/" in self.path:
             base = self.path.split("/")[-1]
-            context = BASES_INDO
+            context = BASES_INFO
         elif self.path.endswith(".html"):
             try:
                 contents = read_html_file("./html"+ self.path)

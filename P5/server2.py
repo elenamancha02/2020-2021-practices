@@ -3,6 +3,7 @@ import socketserver
 import termcolor
 import pathlib
 import jinja2
+
 def read_html_file(filename):
     content = pathlib.Path(filename).read_text()
     return content
@@ -10,9 +11,9 @@ def read_html_file(filename):
 def read_template_html_file(filename):
     content = jinja2.Template(pathlib.Path(filename).read_text())
     return content
-# Define the Server's port
-PORT = 8080
 
+
+PORT = 8080
 
 BASES_INFORMATION = {
     "A": {"link": "https://en.wikipedia.org/wiki/Adenine",
@@ -23,17 +24,17 @@ BASES_INFORMATION = {
     "C": {"link": "https://en.wikipedia.org/wiki/Cytosine",
           "formula": "C4H5N3O",
           "name": "CYTOSINE",
-          "colour" : "yellow",
+          "colour": "yellow",
           },
     "G": {"link": "https://en.wikipedia.org/wiki/Guanine",
           "formula": "C5H5N5O",
           "name": "GUANINE",
-          "colour" : "lightskyblue",
+          "colour": "lightskyblue",
           },
     "T": {"link": "https://en.wikipedia.org/wiki/Thymine",
           "formula": "C5H6N2O2",
           "name": "THYMINE",
-          "colour" : "pink",
+          "colour": "pink",
           }
 }
 # -- This is for preventing the error: "Port already in use"
